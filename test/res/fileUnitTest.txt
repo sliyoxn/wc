@@ -1,0 +1,7 @@
+文件名: ./file/emptyFile.js  字符数: 0  行数: 0  单词数: 0  空行数: 0  注释行数: 0  代码行数: 0  解析时间: 0ms  
+文件名: ./file/singleCharFile.js  字符数: 2  行数: 2  单词数: 1  空行数: 1  注释行数: 0  代码行数: 1  解析时间: 1ms  
+文件名: ./file/singleLineFile.js  字符数: 27  行数: 2  单词数: 4  空行数: 1  注释行数: 0  代码行数: 1  解析时间: 0ms  
+文件名: ./file/singleWordFile.js  字符数: 4  行数: 2  单词数: 1  空行数: 1  注释行数: 0  代码行数: 1  解析时间: 0ms  
+文件名: ./file/classicCodeFile.js  字符数: 1325  行数: 78  单词数: 150  空行数: 26  注释行数: 9  代码行数: 43  解析时间: 0ms  
+文件名: ./file/noClassicCodeFile.js  字符数: 47  行数: 6  单词数: 5  空行数: 1  注释行数: 4  代码行数: 1  解析时间: 0ms  
+文件名: ./file/chCodeFile.js  字符数: 7  行数: 2  单词数: 0  空行数: 1  注释行数: 1  代码行数: 0  解析时间: 1ms  

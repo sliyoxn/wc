@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="libs/prism.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="libs/prism.js"></script>
+    <script src="util/fileutil.js"></script>
+    <script src="util/browserTypeUtil.js"></script>
+    <script src="util/clone.js"></script>
+    <script src="util/randomUtil.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <input type="file" accept=".js,.c,.java,.cpp" id="file-input" style="display: none" @change="handleFileChange" :key="fileInputKey">
+    <input type="file" webkitdirectory id="dir-input" style="display: none" @change="handledDirChange" :key="dirInputKey"/>
+    <el-drawer
+            :visible.sync="tableVisibility"
+            direction="rtl"
+            :with-header="false"
+            :show-close="true"
+            size="100%">
+        <el-table :data="tableData" border height="100%" v-loading="loading">
+            <el-table-column property="filename" label="文件名"></el-table-column>
+            <el-table-column property="charCount" label="字符数"></el-table-column>
+            <el-table-column property="wordCount" label="单词数"></el-table-column>
+            <el-table-column property="lineCount" label="行数"></el-table-column>
+            <el-table-column property="emptyLineCount" label="空行数"></el-table-column>
+            <el-table-column property="commentCount" label="注释行数"></el-table-column>
+            <el-table-column property="codeLineCount" label="代码行数"></el-table-column>
+        </el-table>
+    </el-drawer>
+    <div class="top-box">
+        <div @click="selectFile" style="margin-right: 10px">
+            <el-button type="primary">选择代码文件</el-button>
+        </div>
+        <div style="margin-right: 10px">
+            使用GBK编码读取文件
+            <el-switch v-model="readAsGBK"></el-switch>
+        </div>
+        <div @click="selectDir">
+            <el-button type="primary">选择文件夹</el-button>
+        </div>
+    </div>
+    <label>
+        <textarea name="" id="textBox" ref="textBox" v-show="editModel"></textarea>
+        <div v-if="!editModel" id="previewBox" :key="previewKey">
+            <pre><code class="language-javascript" style="font-size: 20px">{{text}}</code></pre>
+        </div>
+    </label>
+    <div class="button-box">
+        <el-button type="primary" @click="calResult">计算结果</el-button>
+        <el-button type="primary" @click="toggleEditModel">切换为{{editModel ? '预览' : '编辑'}}模式</el-button>
+        <el-button type="primary" @click="tableVisibility = true">打开抽屉</el-button>
+    </div>
+</div>
+
+<script src="index.js"></script>
+
+<script>
+
+
+    let type = getBrowserType();
+    console.log(type);
+    let supportSet = new Set(["gecko", "webkit"]);
+	try {
+		let vm = new Vue({});
+		if (!supportSet.has(type.engine)) {
+			vm.$message.warn("该浏览器可能不支持部分功能(如上传处理文件夹等), 建议使用谷歌浏览器查看");
+		}
+	}catch (e) {
+        alert("该浏览器的版本较低，请使用较新的谷歌浏览器查看");
+	}
+
+</script>
+
+</body>
+
+
+</html>

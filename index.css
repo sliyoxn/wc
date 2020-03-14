@@ -1,0 +1,64 @@
+:root, body, #app {
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    padding: 8px;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+}
+
+#app .top-box {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#app label:last-of-type {
+    flex: 1 1 auto;
+}
+
+textarea#textBox, #previewBox {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: auto;
+    font-size: 20px;
+}
+
+.button-box {
+    margin-top: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: none;
+    background: #A8A8A8;
+    -webkit-box-shadow: none;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: none;
+    border-radius: 10px;
+    background: #eae9e8;
+    -webkit-box-shadow: none;
+}
+
+.el-drawer__body {
+    height: 100%;
+}
+
+.el-drawer__body .el-table {
+    height: 100%;
+    overflow: auto;
+}
