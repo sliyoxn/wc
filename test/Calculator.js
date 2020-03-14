@@ -60,7 +60,7 @@ module.exports = class Calculator {
 		let lines = filterText.split("\n");
 		lines.forEach((line, index) => {
 			// 裁去本行所有的字符串
-			line = line.replace(/("[\w\W]+"|'[\w\W]+'|`[\w\W]+`)/gm, "");
+			line = line.replace(/("[\w\W]+"|'[\w\W]+'|`[\w\W]+`|\/[\w\W]+\/)/gm, "");
 			let flag = line.match(/\/\//gm) !== null;
 			if (flag) {
 				singleCommentCount++;
@@ -72,19 +72,45 @@ module.exports = class Calculator {
 
 	// 裁去多行注释的部分
 	_sliceMulComment(text) {
+		text = this._removeStr(text);
+		text = this._removeExp(text);
 		let str = text;
 		let start = 0;
 		let end = 0;
 		while (((start = str.indexOf("/*")) !== -1) && ((end = str.indexOf("*/")) !== -1)) {
-			if (str[end + 2] === "\n") {
-				end++;
+			let sliceStr = str.slice(start, end + 2);
+			if (sliceStr.indexOf("\n") !== -1) {
+				if (str[end + 2] === "\n") {
+					end++;
+				}
+				if (start !== 0 && str[start - 1] === "\n") {
+					start--;
+				}
+			} else {
+				if (str[end + 2] === "\n") {
+					end++;
+				} else if (start !== 0 && str[start - 1] === "\n") {
+					start--;
+				}
 			}
-			if (start !== 0 && str[start - 1] === "\n") {
-				start--;
+			if (start > end + 2 || end + 2 > str.length) {
+				console.log("运行出错");
 			}
 			str = str.slice(0, start) + str.slice(end + 2, str.length);
 		}
 		return str;
 	}
-
+	_removeStr(text) {
+		return text.replace(/("[\w\W]+"|'[\w\W]+'|`[\w\W]+`)/gm, "");
+	}
+	_removeExp(text) {
+		return text.replace(/\/.+\//gm, (...args) => {
+			let str = args[0];
+			if (str[0] === "/" && str[1] !== "*") {
+				return "";
+			} else {
+				return str;
+			}
+		});
+	}
 };

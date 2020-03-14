@@ -4,9 +4,10 @@ const writeFile = require("./util/writeFile.js");
 const calculator = new Calculator();
 (async function executeTest() {
 	let str = ``;
-	let arr = ["./file/emptyFile.js", "./file/singleCharFile.js",
-		"./file/singleLineFile.js", "./file/singleWordFile.js",
-		"./file/classicCodeFile.js", "./file/noClassicCodeFile.js", "./file/chCodeFile.js"];
+	// let arr = ["./file/emptyFile.js", "./file/singleCharFile.js",
+	// 	"./file/singleLineFile.js", "./file/singleWordFile.js",
+	// 	"./file/classicCodeFile.js", "./file/noClassicCodeFile.js", "./file/chCodeFile.js", "./file/vue.js"];
+	let arr = ["./file/noClassicCodeFile.js"];
 	for (let filename of arr) {
 		let text = await readFile(filename);
 		let {charCount, lineCount, wordCount, emptyLineCount, commentCount, codeLineCount, time} = calculator.calResult(text);
