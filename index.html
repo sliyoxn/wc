@@ -65,12 +65,10 @@
 <script src="index.js"></script>
 
 <script>
-
-
-    let type = getBrowserType();
-    console.log(type);
-    let supportSet = new Set(["gecko", "webkit"]);
 	try {
+		let type = getBrowserType();
+		console.log(type);
+		let supportSet = new Set(["gecko", "webkit"]);
 		let vm = new Vue({});
 		if (!supportSet.has(type.engine)) {
 			vm.$message.warn("该浏览器可能不支持部分功能(如上传处理文件夹等), 建议使用谷歌浏览器查看");
