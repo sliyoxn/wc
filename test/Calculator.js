@@ -3,13 +3,13 @@ module.exports = class Calculator {
 		let startTime = new Date().getTime();
 		if (text.length === 0) {
 			return {
-				charCount : 0,
-				lineCount : 0,
-				wordCount : 0,
-				emptyLineCount : 0,
-				commentCount : 0,
-				codeLineCount : 0,
-				time : new Date().getTime() - startTime
+				charCount: 0,
+				lineCount: 0,
+				wordCount: 0,
+				emptyLineCount: 0,
+				commentCount: 0,
+				codeLineCount: 0,
+				time: new Date().getTime() - startTime
 			};
 		}
 		text = text.replace(/\r\n/gm, "\n");
@@ -34,9 +34,10 @@ module.exports = class Calculator {
 			emptyLineCount,
 			commentCount,
 			codeLineCount,
-			time :  new Date().getTime() - startTime
+			time: new Date().getTime() - startTime
 		}
 	}
+
 	_calEmptyLine(text) {
 		let lines = this._sliceMulComment(text).split("\n");
 		let emptyLineCount = 0;
@@ -72,8 +73,8 @@ module.exports = class Calculator {
 
 	// 裁去多行注释的部分
 	_sliceMulComment(text) {
-		text = this._removeStr(text);
-		text = this._removeExp(text);
+		text = this._replaceStr(text);
+		text = this._replaceExp(text);
 		let str = text;
 		let start = 0;
 		let end = 0;
@@ -100,10 +101,14 @@ module.exports = class Calculator {
 		}
 		return str;
 	}
-	_removeStr(text) {
-		return text.replace(/("[\w\W]+"|'[\w\W]+'|`[\w\W]+`)/gm, "");
+
+	_replaceStr(text) {
+		return text.replace(/("[\w\W]+"|'[\w\W]+'|`[\w\W]+`)/gm, () => {
+			return "";
+		});
 	}
-	_removeExp(text) {
+
+	_replaceExp(text) {
 		return text.replace(/\/.+\//gm, (...args) => {
 			let str = args[0];
 			if (str[0] === "/" && str[1] !== "*") {
@@ -112,5 +117,12 @@ module.exports = class Calculator {
 				return str;
 			}
 		});
+	}
+
+	_getRandomString(str, len) {
+		const randStr = () => Math.random().toString(36).substr(2);
+		if (str.length > len) return str.substr(0, len);
+		if (str.length < len) return this._getRandomString(str + randStr(), len);
+		return str;
 	}
 };
