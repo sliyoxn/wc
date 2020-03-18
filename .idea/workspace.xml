@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="28e85a73-0bbc-4d23-9dad-5a0aa2af8725" name="Default Changelist" comment="" />
+    <list default="true" id="28e85a73-0bbc-4d23-9dad-5a0aa2af8725" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/res/fileUnitTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test/res/fileUnitTest.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +40,7 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="ts.external.directory.path" value="D:\sortware\WebStorm\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -90,22 +95,22 @@
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
     <state x="805" y="331" key="FileChooserDialogImpl/-1920.0.1536.864/0.0.2048.1152@0.0.2048.1152" timestamp="1584238259803" />
-    <state width="2005" height="392" key="GridCell.Tab.0.bottom" timestamp="1584238004869">
+    <state width="2005" height="464" key="GridCell.Tab.0.bottom" timestamp="1584510427089">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
-    <state width="2005" height="392" key="GridCell.Tab.0.bottom/-1920.0.1536.864/0.0.2048.1152@0.0.2048.1152" timestamp="1584238004869" />
-    <state width="2005" height="392" key="GridCell.Tab.0.center" timestamp="1584238004869">
+    <state width="2005" height="464" key="GridCell.Tab.0.bottom/-1920.0.1536.864/0.0.2048.1152@0.0.2048.1152" timestamp="1584510427089" />
+    <state width="2005" height="464" key="GridCell.Tab.0.center" timestamp="1584510427089">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
-    <state width="2005" height="392" key="GridCell.Tab.0.center/-1920.0.1536.864/0.0.2048.1152@0.0.2048.1152" timestamp="1584238004869" />
-    <state width="2005" height="392" key="GridCell.Tab.0.left" timestamp="1584238004869">
+    <state width="2005" height="464" key="GridCell.Tab.0.center/-1920.0.1536.864/0.0.2048.1152@0.0.2048.1152" timestamp="1584510427089" />
+    <state width="2005" height="464" key="GridCell.Tab.0.left" timestamp="1584510427089">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
-    <state width="2005" height="392" key="GridCell.Tab.0.left/-1920.0.1536.864/0.0.2048.1152@0.0.2048.1152" timestamp="1584238004869" />
-    <state width="2005" height="392" key="GridCell.Tab.0.right" timestamp="1584238004869">
+    <state width="2005" height="464" key="GridCell.Tab.0.left/-1920.0.1536.864/0.0.2048.1152@0.0.2048.1152" timestamp="1584510427089" />
+    <state width="2005" height="464" key="GridCell.Tab.0.right" timestamp="1584510427089">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
-    <state width="2005" height="392" key="GridCell.Tab.0.right/-1920.0.1536.864/0.0.2048.1152@0.0.2048.1152" timestamp="1584238004869" />
+    <state width="2005" height="464" key="GridCell.Tab.0.right/-1920.0.1536.864/0.0.2048.1152@0.0.2048.1152" timestamp="1584510427089" />
     <state width="2005" height="392" key="GridCell.Tab.1.bottom" timestamp="1584238004869">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
