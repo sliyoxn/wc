@@ -85,6 +85,7 @@ let vm = new Vue({
 		},
 		_calResult(text) {
 			let startTime = this._getTime();
+			console.log(startTime);
 			try {
 				if (text.length === 0) {
 					return {
@@ -94,7 +95,7 @@ let vm = new Vue({
 						emptyLineCount : 0,
 						commentCount : 0,
 						codeLineCount : 0,
-						time : this._getTime - startTime
+						time : this._getTime() - startTime
 					};
 				}
 				// 处理某些文件的换行是\r\n
@@ -120,7 +121,7 @@ let vm = new Vue({
 					emptyLineCount,
 					commentCount,
 					codeLineCount,
-					time : this._getTime - startTime
+					time : this._getTime() - startTime
 				}
 			}catch (e) {
 				console.warn(e);
