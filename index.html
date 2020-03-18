@@ -11,10 +11,10 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <script src="libs/prism.js"></script>
-    <script src="util/fileutil.js"></script>
-    <script src="util/browserTypeUtil.js"></script>
-    <script src="util/clone.js"></script>
-    <script src="util/randomUtil.js"></script>
+    <script src="./util/fileutil.js"></script>
+    <script src="./util/browserTypeUtil.js"></script>
+    <script src="./util/clone.js"></script>
+    <script src="./util/randomUtil.js"></script>
 
 </head>
 <body>
@@ -35,6 +35,7 @@
             <el-table-column property="emptyLineCount" label="空行数"></el-table-column>
             <el-table-column property="commentCount" label="注释行数"></el-table-column>
             <el-table-column property="codeLineCount" label="代码行数"></el-table-column>
+            <el-table-column property="time" label="时间"></el-table-column>
         </el-table>
     </el-drawer>
     <div class="top-box">

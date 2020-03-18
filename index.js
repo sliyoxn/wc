@@ -64,6 +64,9 @@ let vm = new Vue({
 				})
 			}
 		},
+		_getTime() {
+			return new Date().getTime();
+		},
 		async calResult() {
 			let text = this.$refs.textBox.value;
 			this.text = text;
@@ -81,39 +84,55 @@ let vm = new Vue({
 			});
 		},
 		_calResult(text) {
-			if (text.length === 0) {
+			let startTime = this._getTime();
+			try {
+				if (text.length === 0) {
+					return {
+						charCount : 0,
+						lineCount : 0,
+						wordCount : 0,
+						emptyLineCount : 0,
+						commentCount : 0,
+						codeLineCount : 0,
+						time : this._getTime - startTime
+					};
+				}
+				// 处理某些文件的换行是\r\n
+				text = text.replace(/\r\n/gm, "\n");
+				let lines = text.split("\n");
+				let words = text.match(/[a-zA-Z$_][a-zA-Z0-9$_]*/gm);
+				// 字符数
+				let charCount = text.length;
+				// 行数
+				let lineCount = lines.length;
+				// 单词数
+				let wordCount = words ? words.length : 0;
+				// 空行数
+				let emptyLineCount = this._calEmptyLine(text);
+				// 注释行数
+				let commentCount = this._calCommentCount(text);
+				// 代码行数
+				let codeLineCount = lineCount - emptyLineCount - commentCount;
 				return {
-					charCount : 0,
-					lineCount : 0,
-					wordCount : 0,
-					emptyLineCount : 0,
-					commentCount : 0,
-					codeLineCount : 0
-				};
-			}
-			// 处理某些文件的换行是\r\n
-			text = text.replace(/\r\n/gm, "\n");
-			let lines = text.split("\n");
-			let words = text.match(/[a-zA-Z$_][a-zA-Z0-9$_]*/gm);
-			// 字符数
-			let charCount = text.length;
-			// 行数
-			let lineCount = lines.length;
-			// 单词数
-			let wordCount = words ? words.length : 0;
-			// 空行数
-			let emptyLineCount = this._calEmptyLine(text);
-			// 注释行数
-			let commentCount = this._calCommentCount(text);
-			// 代码行数
-			let codeLineCount = lineCount - emptyLineCount - commentCount;
-			return {
-				charCount,
-				lineCount,
-				wordCount,
-				emptyLineCount,
-				commentCount,
-				codeLineCount
+					charCount,
+					lineCount,
+					wordCount,
+					emptyLineCount,
+					commentCount,
+					codeLineCount,
+					time : this._getTime - startTime
+				}
+			}catch (e) {
+				console.warn(e);
+				return {
+					charCount : "-",
+					lineCount : "-",
+					wordCount : "-",
+					emptyLineCount : "-",
+					commentCount : "-",
+					codeLineCount : "-",
+					time : "-1"
+				}
 			}
 		},
 		_calEmptyLine(text) {
@@ -129,7 +148,6 @@ let vm = new Vue({
 			return emptyLineCount;
 		},
 		_calCommentCount(text) {
-
 			let filterText = this._sliceMulComment(this._removeStr(text));
 			// 多行注释的行数
 			let mulCommentLength = this._removeStr(text).split("\n").length - filterText.split("\n").length;
